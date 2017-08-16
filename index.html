@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>simple crystal game</title>
+  
+  <style type="text/css">
+
+    .crystal-image {
+      width: 100px;
+      height: 100px;
+
+    }
+	
+	#crystals {
+
+		margin-left: 420px;
+		margin-top: 130px;
+	}
+
+	#number-to-guess {
+
+		color: white;
+		margin-left: 600px;
+
+	}
+
+	#total {
+
+		color: white;
+		margin-left: 600px;
+
+	}
+
+    body {
+
+    	background-color: #d7d7d7;
+    	background-repeat: no-repeat;
+
+    }
+  </style>
+
+</head>
+<body>
+
+<body style="background-image: url(assets/images/crystal_background2.png)">
+
+
+  <div id="crystals">
+
+  </div>
+
+
+  <h1> <span id ="total">  </span> <div id="number-to-guess"></div></h1>
+
+  <!-- JAVASCRIPT  -->
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+  var targetNumber = 55;
+
+  var numbers = null;
+
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+
+  var numberOptions = [10, 5, 3, 7];
+
+  for (var i = 0; i < numberOptions.length; i++) {
+
+
+    var imageCrystal = $("<img>");
+
+    imageCrystal.addClass("crystal-image");
+
+    imageCrystal.attr("src", "assets/images/Crystal_blue.png");
+
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+ 
+    $("#crystals").append(imageCrystal);
+  }
+
+ 
+  $(".crystal-image").on("click", function() {
+    
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+ 
+    counter += crystalValue;
+
+    $("#total").text(counter);
+
+    if (counter === targetNumber) {
+
+      alert("You win!");
+      //var targetNumber = targetNumber[Math.floor(Math.random() * 6) + 4];
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    }
+
+  });
+
+  </script>
+</body>
+</html>
