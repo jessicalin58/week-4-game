@@ -58,7 +58,7 @@
 
   <script type="text/javascript">
 
-  var targetNumber = 55;
+  var targetNumber = Math.floor(Math.random() * 101) + 19;
 
   var numbers = null;
 
@@ -93,15 +93,38 @@
 
     $("#total").text(counter);
 
+
     if (counter === targetNumber) {
 
       alert("You win!");
-      //var targetNumber = targetNumber[Math.floor(Math.random() * 6) + 4];
+
+      counter = 0;
+      $("#total").text(0);
+        $("#number-to-guess").text(restart);
+
+
     }
+
 
     else if (counter >= targetNumber) {
       alert("You lose!!");
+
+      counter = 0;
+
+      $("#total").text(0);
+       $("#number-to-guess").text(restart);
+
     }
+
+
+function restart() {
+
+  targetNumber = Math.floor(Math.random() * 101) + 19;
+
+    $("#number-to-guess").text(targetNumber);
+}
+
+
 
   });
 
